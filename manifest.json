@@ -1,0 +1,20 @@
+{
+  "manifest_version": 3,
+  "name": "Facebook News Feed Optimizer",
+  "description": "Get control over the content to digest based on your preferences",
+  "version": "1.0",
+  "action": {
+    "default_icon": "icons/icon-64.png"
+  },
+  "background": {
+    "service_worker": "service-worker.js"
+  },
+  "content_scripts": [
+    {
+      "js": ["scripts/content-script.js"],
+      "matches": [
+        "https://www.facebook.com/"
+      ]
+    }
+  ]
+}
