@@ -296,6 +296,17 @@ const profiles = {
   },
 };
 
+const termI18n = {
+  sponsored: {
+    en: 'Sponsored',
+    vi: 'Được tài trợ',
+  },
+  suggested: {
+    en: 'Suggested',
+    vi: 'Gợi ý'
+  },
+}
+
 const localStore = {
   currentProfile: null,
   profileKeywords: null,
@@ -363,6 +374,14 @@ const shouldHidePostWithIncludeFilter = (post, profile) => {
   }
 };
 
+const matchTerm = (text, term) => {
+  for (localTerm of Object.values(termI18n[term])) {
+    if (text.includes(localTerm)) return true;
+  }
+
+  return false;
+}
+
 const detectPost = (postHTMLNode) => {
   // Skip empty nodes
   if (!postHTMLNode.querySelector) return null;
@@ -372,14 +391,13 @@ const detectPost = (postHTMLNode) => {
   const authorName = postHTMLNode.querySelector("span > h4")?.innerText;
   const postContent = postHTMLNode.querySelector("div[dir='auto']")?.innerText;
 
-  const isSuggestedPost =
-    postRawText.includes("Suggested") || postRawText.includes("Gợi ý");
+  const isSuggestedPost = matchTerm(postRawText, "suggested");
 
   const useTag = postHTMLNode.querySelector("use");
   const postTypeCodeId = useTag && useTag.attributes["xlink:href"].value;
   const isSponsoredPost =
     postTypeCodeId &&
-    document.querySelector(postTypeCodeId).textContent.includes("Sponsored");
+    matchTerm(document.querySelector(postTypeCodeId).textContent, "sponsored");
 
   const isReel = postRawText.includes("Reels");
 
