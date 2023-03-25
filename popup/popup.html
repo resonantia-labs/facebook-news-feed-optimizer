@@ -1,5 +1,465 @@
 <html>
+  <head>
+    <meta charset="utf-8" />
+    <script type="application/javascript" src="./tailwind-3.2.6.js"></script>
+    <link rel="stylesheet" href="/popup/popup.css" />
+  </head>
+
   <body>
-    <h1>Facebook News Feed Optimizer</h1>
+    <div class="p-5" style="width: 650px">
+      <h1 class="text-2xl font-bold text-center py-2">
+        Facebook News Feed Optimizer
+      </h1>
+
+      <div class="space-y-5">
+        <div>
+          <h2 class="flex-auto text-lg font-semibold text-slate-900 text-center mb-2">
+            News Feed Profiles
+          </h2>
+          <div style="margin: 5px 0px">
+            <h3 class="text-base font-semibold leading-7 text-gray-900">
+              Basic profiles:
+            </h3>
+            <div>
+              <div style="display: flex">
+                <span style="width: 33%"
+                  ><div class="flex items-center gap-x-3">
+                    <input
+                      id="noneProfile"
+                      type="radio"
+                      name="profile"
+                      value="none"
+                      checked
+                      class="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600 cursor-pointer"
+                    />
+                    <label
+                      for="noneProfile"
+                      class="block text-sm font-medium leading-6 text-gray-900 cursor-pointer"
+                      >⛔️ None</label
+                    >
+                  </div>
+
+                  <div class="flex items-center gap-x-3">
+                    <input
+                      id="newsProfile"
+                      type="radio"
+                      name="profile"
+                      value="news"
+                      class="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600 cursor-pointer"
+                    />
+                    <label
+                      for="newsProfile"
+                      class="block text-sm font-medium leading-6 text-gray-900 cursor-pointer"
+                      >📇 News</label
+                    >
+                  </div>
+                </span>
+
+                <span style="width: 33%"
+                  ><div class="flex items-center gap-x-3">
+                    <input
+                      id="focusProfile"
+                      type="radio"
+                      name="profile"
+                      value="focus"
+                      class="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600 cursor-pointer"
+                    />
+                    <label
+                      for="focusProfile"
+                      class="block text-sm font-medium leading-6 text-gray-900 cursor-pointer"
+                      >🎯 Focus</label
+                    >
+                  </div>
+
+                  <div class="flex items-center gap-x-3">
+                    <input
+                      id="workingProfile"
+                      type="radio"
+                      name="profile"
+                      value="working"
+                      class="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600 cursor-pointer"
+                    />
+                    <label
+                    for="workingProfile"
+                      class="block text-sm font-medium leading-6 text-gray-900 cursor-pointer"
+                      >💻 Working</label
+                    >
+                  </div>
+                </span>
+
+                <span style="width: 33%"
+                  ><div class="flex items-center gap-x-3">
+                    <input
+                      id="friendsFamilyProfile"
+                      type="radio"
+                      name="profile"
+                      value="friendsFamily"
+                      class="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600 cursor-pointer"
+                    />
+                    <label
+                      for="friendsFamilyProfile"
+                      class="block text-sm font-medium leading-6 text-gray-900 cursor-pointer"
+                      >👪 Friends & Family</label
+                    >
+                  </div>
+                  <div class="flex items-center gap-x-3">
+                    <input
+                      id="shoppingProfile"
+                      type="radio"
+                      name="profile"
+                      value="shopping"
+                      class="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600 cursor-pointer"
+                    />
+                    <label
+                      for="shoppingProfile"
+                      class="block text-sm font-medium leading-6 text-gray-900 cursor-pointer"
+                      >🛍 Shopping</label
+                    >
+                  </div>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin: 5px 0px">
+            <h3 class="text-base font-semibold leading-7 text-gray-900">
+              Custom profiles:
+            </h3>
+            <div style="display: flex">
+              <span style="width: 33%"
+                ><div class="flex items-center gap-x-3">
+                  <input
+                    id="vinsmartProfile"
+                    type="radio"
+                    name="profile"
+                    value="vinsmart"
+                    class="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600 cursor-pointer"
+                  />
+                  <label
+                    for="vinsmartProfile"
+                    class="block text-sm font-medium leading-6 text-gray-900 cursor-pointer"
+                    >🏡 Residence</label
+                  >
+                </div>
+              </span>
+
+              <span style="width: 33%">
+                <div class="flex items-center gap-x-3">
+                  <input
+                    id="investmentProfile"
+                    type="radio"
+                    name="profile"
+                    value="trading"
+                    class="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600 cursor-pointer"
+                  />
+                  <label
+                    for="investmentProfile"
+                    class="block text-sm font-medium leading-6 text-gray-900 cursor-pointer"
+                    >💵 Investment</label
+                  >
+                </div>
+              </span>
+
+              <span style="width: 33%"
+                ><div class="flex items-center gap-x-3">
+                  <input
+                    id="entertainmentProfile"
+                    type="radio"
+                    name="profile"
+                    value="entertainment"
+                    class="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600 cursor-pointer"
+                  />
+                  <label
+                    for="entertainmentProfile"
+                    class="block text-sm font-medium leading-6 text-gray-900 cursor-pointer"
+                    >🎭 Entertainment</label
+                  >
+                </div>
+              </span>
+            </div>
+
+            <div style="display: flex">
+              <span style="width: 33%"
+                ><div class="flex items-center gap-x-3">
+                  <input
+                    id="foodProfile"
+                    type="radio"
+                    name="profile"
+                    class="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600 cursor-pointer"
+                  />
+                  <label
+                    for="foodProfile"
+                    class="block text-sm font-medium leading-6 text-gray-900 cursor-pointer"
+                    >🍣 Foods</label
+                  >
+                </div>
+              </span>
+
+              <span style="width: 33%"
+                ><div class="flex items-center gap-x-3">
+                  <input
+                    id="travelingProfile"
+                    type="radio"
+                    name="profile"
+                    class="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600 cursor-pointer"
+                  />
+                  <label
+                    for="travelingProfile"
+                    class="block text-sm font-medium leading-6 text-gray-900 cursor-pointer"
+                    >🛫 Traveling</label
+                  >
+                </div>
+              </span>
+
+              <span style="width: 33%"
+                ><div class="flex items-center gap-x-3">
+                  <input
+                    id="gardeningProfile"
+                    type="radio"
+                    name="profile"
+                    class="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600 cursor-pointer"
+                  />
+                  <label
+                    for="gardeningProfile"
+                    class="block text-sm font-medium leading-6 text-gray-900 cursor-pointer"
+                    >🪴 Gardening</label
+                  >
+                </div>
+              </span>
+            </div>
+          </div>
+          <div class="my-3">
+            <button
+              id="changeProfileButton"
+              class="h-10 px-4 font-semibold rounded-md bg-blue-600 text-white"
+            >
+              Switch
+            </button>
+
+            <button
+              class="h-10 px-4 font-semibold rounded-md border border-slate-200 text-slate-900"
+            >
+              Add
+            </button>
+            <button
+              class="h-10 px-4 font-semibold rounded-md border border-slate-200 text-slate-900"
+            >
+              Delete
+            </button>
+          </div>
+        </div>
+
+        <div id="profileSettings" class="bg-amber-50 p-5 border-2 border-dashed rounded hidden">
+          <h2 id="profileSettingsTitle" class="flex-auto text-lg font-semibold text-slate-900 text-center mb-2">
+            🎯 Focus Profile Settings
+          </h2>
+          <div class="flex">
+            <h3 class="text-base font-semibold leading-7 text-gray-900 mr-2">
+              Filtering Mode:
+            </h3>
+            <div class="flex space-x-5">
+              <div class="flex items-center gap-x-3">
+                <input
+                  id="filterModeExclude"
+                  name="filterMode"
+                  type="radio"
+                  value="exclude"
+                  class="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600 cursor-pointer"
+                />
+                <label
+                  for="filterModeExclude"
+                  class="block text-sm font-medium leading-6 text-gray-900 cursor-pointer"
+                  >Exclude</label
+                >
+              </div>
+
+              <div class="flex items-center gap-x-3">
+                <input
+                  id="filterModeInclude"
+                  name="filterMode"
+                  type="radio"
+                  value="include"
+                  class="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600 cursor-pointer"
+                />
+                <label
+                  for="filterModeInclude"
+                  class="block text-sm font-medium leading-6 text-gray-900 cursor-pointer"
+                  >Include</label
+                >
+              </div>
+            </div>
+          </div>
+
+          <div style="margin: 5px 0px">
+            <h3 class="text-base font-semibold leading-7 text-gray-900">
+              Facebook Components:
+            </h3>
+            <div style="display: flex">
+              <div style="width: 50%; display: flex; flex-direction: column">
+                <div class="flex items-center gap-x-3">
+                  <input
+                    id="storiesComponent"
+                    name="stories"
+                    type="checkbox"
+                    class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600 cursor-pointer"
+                  />
+                  <label
+                    for="storiesComponent"
+                    class="block text-sm font-medium leading-6 text-gray-900 cursor-pointer"
+                    >Stories</label
+                  >
+                </div>
+
+                <div class="flex items-center gap-x-3">
+                  <input
+                    id="reelsComponent"
+                    name="reels"
+                    type="checkbox"
+                    class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600 cursor-pointer"
+                  />
+                  <label
+                    for="reelsComponent"
+                    class="block text-sm font-medium leading-6 text-gray-900 cursor-pointer"
+                    >Reels</label
+                  >
+                </div>
+
+                <div class="flex items-center gap-x-3">
+                  <input
+                    id="friendPostComponent"
+                    name="friendPosts"
+                    type="checkbox"
+                    class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600 cursor-pointer"
+                  />
+                  <label
+                    for="friendPostComponent"
+                    class="block text-sm font-medium leading-6 text-gray-900 cursor-pointer"
+                    >Friend posts</label
+                  >
+                </div>
+
+                <div class="flex items-center gap-x-3">
+                  <input
+                    id="groupPostsComponent"
+                    name="groupPosts"
+                    type="checkbox"
+                    class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600 cursor-pointer"
+                  />
+                  <label
+                    for="groupPostsComponent"
+                    class="block text-sm font-medium leading-6 text-gray-900 cursor-pointer"
+                    >Group posts</label
+                  >
+                </div>
+
+                <div class="flex items-center gap-x-3">
+                  <input
+                    id="pagePostsComponent"
+                    name="pagePosts"
+                    type="checkbox"
+                    class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600 cursor-pointer"
+                  />
+                  <label
+                    for="pagePostsComponent"
+                    class="block text-sm font-medium leading-6 text-gray-900 cursor-pointer"
+                    >Page posts</label
+                  >
+                </div>
+              </div>
+
+              <div style="width: 50%; display: flex; flex-direction: column">
+                <div class="flex items-center gap-x-3">
+                  <input
+                    id="sponsoredPostsComponent"
+                    name="sponsoredPosts"
+                    type="checkbox"
+                    class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600 cursor-pointer"
+                  />
+                    
+                  <label
+                  for="sponsoredPostsComponent"
+                    class="block text-sm font-medium leading-6 text-gray-900 cursor-pointer"
+                    >Ads/Sponsored posts</label
+                  >
+                </div>
+
+                <div class="flex items-center gap-x-3">
+                  <input
+                    id="friendSuggestionsComponent"
+                    name="friendSuggestions"
+                    type="checkbox"
+                    class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600 cursor-pointer"
+                  />
+                    
+                  <label
+                  for="friendSuggestionsComponent"
+                    class="block text-sm font-medium leading-6 text-gray-900 cursor-pointer"
+                    >Friend suggestions</label
+                  >
+                </div>
+
+                <div class="flex items-center gap-x-3">
+                  <input
+                    id="postSuggestionsComponent"
+                    name="postSuggestions"
+                    type="checkbox"
+                    class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600 cursor-pointer"
+                  />
+                    
+                  <label
+                  for="postSuggestionsComponent"
+                    class="block text-sm font-medium leading-6 text-gray-900 cursor-pointer"
+                    >Post suggestions</label
+                  >
+                </div>
+
+                <div class="flex items-center gap-x-3">
+                  <input
+                    id="groupSuggestionsComponent"
+                    name="groupSuggestions"
+                    type="checkbox"
+                    class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600 cursor-pointer"
+                  />
+                    
+                  <label
+                  for="groupSuggestionsComponent"
+                    class="block text-sm font-medium leading-6 text-gray-900 cursor-pointer"
+                    >Group suggestions</label
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin: 5px 0px">
+            <h3 class="text-base font-semibold leading-7 text-gray-900">
+              Custom Filters:
+            </h3>
+            <div>
+              <ul id="customFilterList" class="list-disc list-inside"></ul>
+            </div>
+          </div>
+
+          <div class="my-3">
+            <button
+              class="h-10 px-4 font-semibold rounded-md border border-slate-200 bg-blue-600 text-white"
+            >
+              Save
+            </button>
+            <button
+              class="h-10 px-4 font-semibold rounded-sm bg-white border border-slate-200 text-slate-900"
+            >
+              Add filter
+            </button>
+            <button
+              class="h-10 px-4 font-semibold rounded-md bg-white border border-slate-200 text-slate-900"
+            >
+              Reset
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
+  <script type="application/javascript" src="/popup/popup.js"></script>
 </html>
