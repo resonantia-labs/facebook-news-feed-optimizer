@@ -15,7 +15,8 @@
     {
       "js": ["scripts/content-script.js"],
       "matches": [
-        "https://www.facebook.com/"
+        "https://www.facebook.com/",
+        "https://www.facebook.com/*"
       ]
     }
   ]

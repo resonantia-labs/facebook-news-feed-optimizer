@@ -32,10 +32,10 @@ const profiles = {
               "thanh lý",
               "săn sale",
               "giảm giá",
-              "khuyến mãi"
-            ]
-          }
-        ]
+              "khuyến mãi",
+            ],
+          },
+        ],
       },
       {
         name: "Mua bán, cho thuê chung cư",
@@ -49,10 +49,10 @@ const profiles = {
               "/tháng",
               "chính chủ",
               "cần nhượng",
-              "phòng studio"
-            ]
-          }
-        ]
+              "phòng studio",
+            ],
+          },
+        ],
       },
       {
         name: "Bất động sản",
@@ -66,10 +66,10 @@ const profiles = {
               "bđs",
               "mặt đường",
               "thổ cư",
-              "chính chủ"
-            ]
-          }
-        ]
+              "chính chủ",
+            ],
+          },
+        ],
       },
       {
         name: "Chụp ảnh, giao lưu ảnh",
@@ -87,10 +87,10 @@ const profiles = {
               "lookbook",
               "đi đâu chụp hình",
               "nhiếp ảnh",
-              "chụp ảnh sản phẩm"
-            ]
-          }
-        ]
+              "chụp ảnh sản phẩm",
+            ],
+          },
+        ],
       },
       {
         name: "Tuyển dụng, việc làm",
@@ -104,9 +104,9 @@ const profiles = {
               "tuyển dụng",
               "remote job",
               "part time job",
-            ]
-          }
-        ]
+            ],
+          },
+        ],
       },
       {
         name: "Chung cư, hội cư dân",
@@ -122,11 +122,11 @@ const profiles = {
               "ecopark",
               "vinhomes",
               "masteri",
-            ]
-          }
-        ]
+            ],
+          },
+        ],
       },
-    ]
+    ],
   },
   shopping: {
     name: "Shopping",
@@ -137,7 +137,7 @@ const profiles = {
       friendPosts: false,
       groupPosts: true,
       pagePosts: true,
-      sponsoredPosts: true,
+      sponsoredPosts: false,
       friendSuggestions: false,
       postSuggestions: false,
       groupSuggestions: false,
@@ -161,10 +161,10 @@ const profiles = {
               "thanh lý",
               "săn sale",
               "giảm giá",
-              "khuyến mãi"
-            ]
-          }
-        ]
+              "khuyến mãi",
+            ],
+          },
+        ],
       },
       {
         name: "Mua bán, cho thuê chung cư",
@@ -178,10 +178,10 @@ const profiles = {
               "/tháng",
               "chính chủ",
               "cần nhượng",
-              "phòng studio"
-            ]
-          }
-        ]
+              "phòng studio",
+            ],
+          },
+        ],
       },
       {
         name: "Bất động sản",
@@ -195,12 +195,12 @@ const profiles = {
               "bđs",
               "mặt đường",
               "thổ cư",
-              "chính chủ"
-            ]
-          }
-        ]
+              "chính chủ",
+            ],
+          },
+        ],
       },
-    ]
+    ],
   },
   vinsmart: {
     name: "VinSmart",
@@ -231,59 +231,140 @@ const profiles = {
               "ecopark",
               "vinhomes",
               "masteri",
-              "cộng đồng"
-            ]
-          }
-        ]
+              "cộng đồng",
+            ],
+          },
+        ],
       },
-    ]
+    ],
+  },
+  investment: {
+    name: "Investment",
+    mode: "include",
+    components: {
+      stories: false,
+      reels: false,
+      friendPosts: true,
+      groupPosts: true,
+      pagePosts: true,
+      sponsoredPosts: false,
+      friendSuggestions: false,
+      postSuggestions: false,
+      groupSuggestions: false,
+    },
+    filters: [
+      {
+        name: "Đầu tư, chứng khoán",
+        rules: [
+          {
+            name: "Đầu tư, chứng khoán",
+            type: "keywords",
+            keywords: [
+              "đầu tư",
+              "chứng khoán",
+              "cổ phiếu",
+              "bitcoin",
+              "vàng",
+              "tỷ giá",
+              "tài chính",
+              "thị trường",
+              "simplize",
+              "vietstock",
+              "cafef",
+              "vn index",
+              "vn-index",
+              "dowjones",
+              "lạm phát",
+              "fed",
+              "lãi suất",
+              "ngân hàng",
+              "dòng tiền",
+              "nguồn vốn",
+              "tăng trần",
+              "giảm sàn",
+              "up trend",
+              "down trend",
+              "sóng hồi",
+              "phân tích cơ bản",
+              "phân tích kỹ thuật",
+              "góc nhìn",
+            ],
+          },
+        ],
+      },
+    ],
   },
 };
 
 const localStore = {
-  currentProfile:  null,
+  currentProfile: null,
   profileKeywords: null,
   newsFeedObserver: null,
+  debug: false,
 };
 
 const newsFeed = document.querySelector("span#ssrb_feed_start + div > div");
 
 const shouldHidePost = (post, profile) => {
-  const filterFunction = profile.mode === "exclude" ? shouldHidePostWithExcludeFilter : shouldHidePostWithIncludeFilter;
+  const filterFunction =
+    profile.mode === "exclude"
+      ? shouldHidePostWithExcludeFilter
+      : shouldHidePostWithIncludeFilter;
   return filterFunction(post, profile);
 };
 
 const shouldHidePostWithExcludeFilter = (post, profile) => {
-  if (profile.components.sponsoredPosts && post.isSponsoredPost) return true;
-  if (profile.components.reels && post.isReel) return true;
-  if (profile.components.stories && post.isStory) return true;
-  if (profile.components.friendPosts && post.isFriendPost) return true;
-  if (profile.components.groupPosts && post.isGroupPost) return true;
-  if (profile.components.pagePosts && post.isPagePost) return true;
-  if (profile.components.friendSuggestions && post.isFriendSuggestion) return true;
-  if (profile.components.groupSuggestions && post.isGroupSuggestion) return true;
-  if (profile.components.postSuggestions && post.isPostSuggestion) return true;
+  if (profile.components.sponsoredPosts && post.isSponsoredPost)
+    return {
+      matched: true, term: "sponsoredPosts"};
+  if (profile.components.reels && post.isReel) return {
+    matched: true, term: "reels"};
+  if (profile.components.stories && post.isStory) return {
+    matched: true, term: "stories"};
+  if (profile.components.friendPosts && post.isFriendPost) return {
+    matched: true, term: "friendPosts"};
+  if (profile.components.groupPosts && post.isGroupPost) return {
+    matched: true, term: "groupPosts"};
+  if (profile.components.pagePosts && post.isPagePost) return {
+    matched: true, term: "pagePosts"};
+  if (profile.components.friendSuggestions && post.isFriendSuggestion)
+    return {
+      matched: true, term: "friendSuggestions"};
+  if (profile.components.groupSuggestions && post.isGroupSuggestion)
+    return {
+      matched: true, term: "groupSuggestions"};
+  if (profile.components.postSuggestions && post.isPostSuggestion)
+    return {
+      matched: true, term: "postSuggestions"};
 
   if (!localStore.profileKeywords) {
-    localStore.profileKeywords = profile.filters.flatMap(filter => filter.rules.flatMap(rules => rules.keywords));
+    localStore.profileKeywords = profile.filters.flatMap((filter) =>
+      filter.rules.flatMap((rules) => rules.keywords)
+    );
   }
 
-  if (!post.postRawText) return false;
+  if (!post.postRawText) return {matched: false};
 
   for (const keyword of localStore.profileKeywords) {
-    if (post.authorName?.toLowerCase().includes(keyword)) return true;
-    if (post.postContent?.toLowerCase().includes(keyword)) return true;
+    if (post.authorName?.toLowerCase().includes(keyword)) return {
+      matched: true, term: keyword};
+    if (post.postContent?.toLowerCase().includes(keyword)) return {
+      matched: true, term: keyword};
   }
 
-  return false;
+  return {matched: false};
 };
 
 const shouldHidePostWithIncludeFilter = (post, profile) => {
-  return !shouldHidePostWithExcludeFilter(post, profile);
+  const {matched: excludeMatched, term} = shouldHidePostWithExcludeFilter(post, profile);
+  return {
+    matched: !excludeMatched,
+    term,
+  }
 };
 
-const detectPost = postHTMLNode => {
-   // Skip empty nodes
+const detectPost = (postHTMLNode) => {
+  // Skip empty nodes
   if (!postHTMLNode.querySelector) return null;
 
   // Get author name & post content to check content type
@@ -291,17 +372,16 @@ const detectPost = postHTMLNode => {
   const authorName = postHTMLNode.querySelector("span > h4")?.innerText;
   const postContent = postHTMLNode.querySelector("div[dir='auto']")?.innerText;
 
-  const postName = postHTMLNode
-    .querySelector("span:has(use)")
-    ?.innerText.replace(/[\n·]/g, "")
-    .trim();
-  const postIndicator = postHTMLNode
-  .querySelector("div span:not(:has(*))")
-  ?.innerText
-  const isSuggestedPost = postIndicator && (postIndicator.includes("Suggest") || postIndicator.includes("Gợi ý"))
-  const isSponsoredPost = postName === "";
+  const isSuggestedPost =
+    postRawText.includes("Suggested") || postRawText.includes("Gợi ý");
 
-  const isReel = postRawText.includes("Reels")
+  const useTag = postHTMLNode.querySelector("use");
+  const postTypeCodeId = useTag && useTag.attributes["xlink:href"].value;
+  const isSponsoredPost =
+    postTypeCodeId &&
+    document.querySelector(postTypeCodeId).textContent.includes("Sponsored");
+
+  const isReel = postRawText.includes("Reels");
 
   return {
     authorName,
@@ -316,26 +396,44 @@ const detectPost = postHTMLNode => {
     isFriendSuggestion: isSuggestedPost,
     isGroupSuggestion: isSuggestedPost,
     isPostSuggestion: isSuggestedPost,
-  }
-}
+  };
+};
 
 const filterPost = (postHTMLNode, profile) => {
   const post = detectPost(postHTMLNode);
   if (!post || !post.postRawText?.trim()) return;
 
-  if (shouldHidePost(post, profile)) {
-    hidePost(postHTMLNode);
+  const {matched: filterMatched, term} = shouldHidePost(post, profile);
+  if (filterMatched) 
+    hidePost(postHTMLNode, post);
+
+  let label = "";
+  if (profile.mode === "exclude")
+    label = filterMatched ? `Hide: Matched exclude filter for: ${term}` : `Show: Not match exclude filter`;
+  else 
+    label = filterMatched ? `Hide: Not match include filter` : `Show: Matched include filter for: ${term}`;
+  decoratePost(postHTMLNode, filterMatched, label)
+};
+
+const hidePost = (postHTMLNode, post) => {
+  if (localStore.debug) {
     console.log(
       "%cHided a post from: " + post.authorName,
       "background-color: yellow"
     );
     console.log("Content: ", post.postContent);
-  }
+  } else postHTMLNode.style.display = "none";
 };
 
-const hidePost = (postHTMLNode) => {
-  postHTMLNode.style.display = "none";
-  postHTMLNode.style.textDecoration = "line-through";
+const decoratePost = (postHTMLNode, isHide, label) => {
+  const cardHTMLNode = postHTMLNode.childNodes[0].childNodes[0].childNodes[0];
+  if (!cardHTMLNode) return;
+  const indicatorColor = isHide ? "red" : "green";
+  cardHTMLNode.style.border = `2px solid ${indicatorColor}`;
+
+  const matchedLabelNode = document.createElement("p");
+  matchedLabelNode.innerHTML = `<strong style="padding-left: 20px; color: ${indicatorColor}">${label}</strong>`;
+  cardHTMLNode.appendChild(matchedLabelNode);
 }
 
 const filterPosts = (postNodes, profile) => {
@@ -354,23 +452,23 @@ const onPostChangeListener = (mutationList, observer) => {
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   const { name, data } = request;
   switch (name) {
-    case 'CHANGE_PROFILE':
+    case "CHANGE_PROFILE":
       return handleChangeProfile(data, sendResponse);
-    case 'GET_PROFILE':
+    case "GET_PROFILE":
       return handleGetProfile(data, sendResponse);
   }
 });
 
 const handleChangeProfile = (data, callback) => {
   if (data.profile === "none") {
-    console.log("stop")
     localStore.currentProfile = null;
     localStore.newsFeedObserver.disconnect();
+    // window.location.reload();
     return {
       success: true,
       profile: {
-        name: "Off"
-      }
+        name: "Off",
+      },
     };
   }
 
@@ -382,10 +480,10 @@ const handleChangeProfile = (data, callback) => {
   }
 
   filterPosts(newsFeed.childNodes, localStore.currentProfile);
-
+  // window.location.reload();
   callback({
     success: true,
-    profile: localStore.currentProfile
+    profile: localStore.currentProfile,
   });
 };
 
