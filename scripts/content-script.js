@@ -29,6 +29,10 @@ const profiles = {
               "cần bán",
               "cho thuê",
               "cần cho thuê",
+              "thanh lý",
+              "săn sale",
+              "giảm giá",
+              "khuyến mãi"
             ]
           }
         ]
@@ -68,13 +72,13 @@ const profiles = {
         ]
       },
       {
-        name: "Mẫu ảnh, nháy và mẫu",
+        name: "Chụp ảnh, giao lưu ảnh",
         rules: [
           {
             name: "Giao lưu ảnh",
             type: "keywords",
             keywords: [
-              "giao lưu phó",
+              "giao lưu ảnh",
               "mẫu ảnh",
               "chụp sản phẩm",
               "mẫu chụp",
@@ -154,6 +158,10 @@ const profiles = {
               "cần bán",
               "cho thuê",
               "cần cho thuê",
+              "thanh lý",
+              "săn sale",
+              "giảm giá",
+              "khuyến mãi"
             ]
           }
         ]
@@ -223,6 +231,7 @@ const profiles = {
               "ecopark",
               "vinhomes",
               "masteri",
+              "cộng đồng"
             ]
           }
         ]
@@ -256,16 +265,14 @@ const shouldHidePostWithExcludeFilter = (post, profile) => {
   if (profile.components.postSuggestions && post.isPostSuggestion) return true;
 
   if (!localStore.profileKeywords) {
-    // console.log("Set profile keywords: ");
     localStore.profileKeywords = profile.filters.flatMap(filter => filter.rules.flatMap(rules => rules.keywords));
-    // console.log(localStore.profileKeywords);
   }
 
   if (!post.postRawText) return false;
 
   for (const keyword of localStore.profileKeywords) {
-    if (post.authorName.toLowerCase().includes(keyword)) return true;
-    if (post.postContent.toLowerCase().includes(keyword)) return true;
+    if (post.authorName?.toLowerCase().includes(keyword)) return true;
+    if (post.postContent?.toLowerCase().includes(keyword)) return true;
   }
 
   return false;
