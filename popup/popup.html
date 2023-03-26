@@ -7,21 +7,17 @@
 
   <body>
     <div class="p-5" style="width: 650px">
-      <h1 class="text-2xl font-bold text-center py-2">
-        Facebook News Feed Optimizer
-      </h1>
-
       <div class="space-y-5">
         <div>
           <h2 class="flex-auto text-lg font-semibold text-slate-900 text-center mb-2">
             News Feed Profiles
           </h2>
-          <div style="margin: 5px 0px">
+          <div class="my-5">
             <h3 class="text-base font-semibold leading-7 text-gray-900">
               Basic profiles:
             </h3>
             <div>
-              <div style="display: flex">
+              <div class="flex columns-3">
                 <span style="width: 33%"
                   ><div class="flex items-center gap-x-3">
                     <input
@@ -41,6 +37,7 @@
 
                   <div class="flex items-center gap-x-3">
                     <input
+                      disabled
                       id="newsProfile"
                       type="radio"
                       name="profile"
@@ -90,6 +87,7 @@
                 <span style="width: 33%"
                   ><div class="flex items-center gap-x-3">
                     <input
+                      disabled
                       id="friendsFamilyProfile"
                       type="radio"
                       name="profile"
@@ -121,11 +119,11 @@
             </div>
           </div>
 
-          <div style="margin: 5px 0px">
+          <div class="my-5">
             <h3 class="text-base font-semibold leading-7 text-gray-900">
               Custom profiles:
             </h3>
-            <div style="display: flex">
+            <div class="flex">
               <span style="width: 33%"
                 ><div class="flex items-center gap-x-3">
                   <input
@@ -163,6 +161,7 @@
               <span style="width: 33%"
                 ><div class="flex items-center gap-x-3">
                   <input
+                    disabled
                     id="entertainmentProfile"
                     type="radio"
                     name="profile"
@@ -178,10 +177,11 @@
               </span>
             </div>
 
-            <div style="display: flex">
+            <div class="flex">
               <span style="width: 33%"
                 ><div class="flex items-center gap-x-3">
                   <input
+                    disabled
                     id="foodProfile"
                     type="radio"
                     name="profile"
@@ -198,6 +198,7 @@
               <span style="width: 33%"
                 ><div class="flex items-center gap-x-3">
                   <input
+                    disabled
                     id="travelingProfile"
                     type="radio"
                     name="profile"
@@ -214,6 +215,7 @@
               <span style="width: 33%"
                 ><div class="flex items-center gap-x-3">
                   <input
+                    disabled
                     id="gardeningProfile"
                     type="radio"
                     name="profile"
@@ -237,12 +239,12 @@
             </button>
 
             <button
-              class="h-10 px-4 font-semibold rounded-md border border-slate-200 text-slate-900"
+              class="hidden h-10 px-4 font-semibold rounded-md border border-slate-200 text-slate-900"
             >
               Add
             </button>
             <button
-              class="h-10 px-4 font-semibold rounded-md border border-slate-200 text-slate-900"
+              class="hidden h-10 px-4 font-semibold rounded-md border border-slate-200 text-slate-900"
             >
               Delete
             </button>
@@ -260,6 +262,7 @@
             <div class="flex space-x-5">
               <div class="flex items-center gap-x-3">
                 <input
+                  disabled
                   id="filterModeExclude"
                   name="filterMode"
                   type="radio"
@@ -275,6 +278,7 @@
 
               <div class="flex items-center gap-x-3">
                 <input
+                  disabled
                   id="filterModeInclude"
                   name="filterMode"
                   type="radio"
@@ -290,14 +294,15 @@
             </div>
           </div>
 
-          <div style="margin: 5px 0px">
+          <div class="my-5">
             <h3 class="text-base font-semibold leading-7 text-gray-900">
               Facebook Components:
             </h3>
-            <div style="display: flex">
-              <div style="width: 50%; display: flex; flex-direction: column">
+            <div class="flex">
+              <div class="flex flex-col" style="width: 50%;">
                 <div class="flex items-center gap-x-3">
                   <input
+                    disabled
                     id="storiesComponent"
                     name="stories"
                     type="checkbox"
@@ -312,6 +317,7 @@
 
                 <div class="flex items-center gap-x-3">
                   <input
+                    disabled
                     id="reelsComponent"
                     name="reels"
                     type="checkbox"
@@ -326,6 +332,7 @@
 
                 <div class="flex items-center gap-x-3">
                   <input
+                    disabled
                     id="friendPostComponent"
                     name="friendPosts"
                     type="checkbox"
@@ -340,6 +347,7 @@
 
                 <div class="flex items-center gap-x-3">
                   <input
+                    disabled
                     id="groupPostsComponent"
                     name="groupPosts"
                     type="checkbox"
@@ -354,6 +362,7 @@
 
                 <div class="flex items-center gap-x-3">
                   <input
+                    disabled
                     id="pagePostsComponent"
                     name="pagePosts"
                     type="checkbox"
@@ -367,9 +376,10 @@
                 </div>
               </div>
 
-              <div style="width: 50%; display: flex; flex-direction: column">
+              <div class="flex flex-col" style="width: 50%;">
                 <div class="flex items-center gap-x-3">
                   <input
+                    disabled
                     id="sponsoredPostsComponent"
                     name="sponsoredPosts"
                     type="checkbox"
@@ -385,6 +395,7 @@
 
                 <div class="flex items-center gap-x-3">
                   <input
+                    disabled
                     id="friendSuggestionsComponent"
                     name="friendSuggestions"
                     type="checkbox"
@@ -400,6 +411,7 @@
 
                 <div class="flex items-center gap-x-3">
                   <input
+                    disabled
                     id="postSuggestionsComponent"
                     name="postSuggestions"
                     type="checkbox"
@@ -415,6 +427,7 @@
 
                 <div class="flex items-center gap-x-3">
                   <input
+                    disabled
                     id="groupSuggestionsComponent"
                     name="groupSuggestions"
                     type="checkbox"
@@ -431,7 +444,7 @@
             </div>
           </div>
 
-          <div style="margin: 5px 0px">
+          <div class="my-3">
             <h3 class="text-base font-semibold leading-7 text-gray-900">
               Custom Filters:
             </h3>
@@ -442,22 +455,26 @@
 
           <div class="my-3">
             <button
-              class="h-10 px-4 font-semibold rounded-md border border-slate-200 bg-blue-600 text-white"
+              class="hidden h-10 px-4 font-semibold rounded-md border border-slate-200 bg-blue-600 text-white"
             >
               Save
             </button>
             <button
-              class="h-10 px-4 font-semibold rounded-sm bg-white border border-slate-200 text-slate-900"
+              class="hidden h-10 px-4 font-semibold rounded-sm bg-white border border-slate-200 text-slate-900"
             >
               Add filter
             </button>
             <button
-              class="h-10 px-4 font-semibold rounded-md bg-white border border-slate-200 text-slate-900"
+              class=hidden h-10 px-4 font-semibold rounded-md bg-white border border-slate-200 text-slate-900"
             >
               Reset
             </button>
           </div>
         </div>
+      </div>
+
+      <div class="text-base italic text-current pt-4">
+        <p>Note: Adding new profiles, customizing profile settings are in development</p>
       </div>
     </div>
   </body>

@@ -88,6 +88,12 @@ const profiles = {
               "đi đâu chụp hình",
               "nhiếp ảnh",
               "chụp ảnh sản phẩm",
+              "giao lưu phó nháy và mẫu",
+              "chân dung ánh sáng đẹp",
+              "giao lưu chụp ảnh",
+              "giao lưu phó nháy",
+              "hội nghiện makeup",
+              "cộng đồng ảnh",
             ],
           },
         ],
@@ -109,6 +115,20 @@ const profiles = {
         ],
       },
       {
+        name: "Xe cộ",
+        rules: [
+          {
+            name: "Xe cộ",
+            type: "keywords",
+            keywords: [
+              "anh em mê xe",
+              "gearupvn",
+              "hội kia",
+            ],
+          },
+        ],
+      },
+      {
         name: "Chung cư, hội cư dân",
         rules: [
           {
@@ -122,6 +142,19 @@ const profiles = {
               "ecopark",
               "vinhomes",
               "masteri",
+            ],
+          },
+        ],
+      },
+      {
+        name: "Linh tinh",
+        rules: [
+          {
+            name: "Linh tinh",
+            type: "keywords",
+            keywords: [
+              "cơm vợ nấu",
+              "hanoi massive"
             ],
           },
         ],
@@ -196,6 +229,7 @@ const profiles = {
               "mặt đường",
               "thổ cư",
               "chính chủ",
+              "nhà đất",
             ],
           },
         ],
@@ -294,6 +328,65 @@ const profiles = {
       },
     ],
   },
+  working: {
+    name: "Working",
+    mode: "include",
+    components: {
+      stories: false,
+      reels: false,
+      friendPosts: true,
+      groupPosts: true,
+      pagePosts: true,
+      sponsoredPosts: false,
+      friendSuggestions: false,
+      postSuggestions: false,
+      groupSuggestions: false,
+    },
+    filters: [
+      {
+        name: "Product development",
+        rules: [
+          {
+            name: "Product development",
+            type: "keywords",
+            keywords: [
+              "product development",
+              "viet tech",
+              "viet refferal",
+              "product findings",
+              "ui/ux",
+              "side project",
+              "product hunt",
+              "product management",
+              "project management",
+            ],
+          },
+        ],
+      },
+      {
+        name: "Software engineering",
+        rules: [
+          {
+            name: "Software Engineering",
+            type: "keywords",
+            keywords: [
+              "software engineering",
+              "code",
+              "java",
+              "python",
+              "javscript",
+              "react",
+              "code",
+              "coding",
+              "devops",
+              "phần mềm",
+              "freelance",
+            ],
+          },
+        ],
+      },
+    ],
+  },
 };
 
 const termI18n = {
@@ -327,26 +420,26 @@ const shouldHidePost = (post, profile) => {
 const shouldHidePostWithExcludeFilter = (post, profile) => {
   if (profile.components.sponsoredPosts && post.isSponsoredPost)
     return {
-      matched: true, term: "sponsoredPosts"};
+      matched: true, term: "Sponsored post"};
   if (profile.components.reels && post.isReel) return {
-    matched: true, term: "reels"};
+    matched: true, term: "Reels"};
   if (profile.components.stories && post.isStory) return {
-    matched: true, term: "stories"};
+    matched: true, term: "Stories"};
   if (profile.components.friendPosts && post.isFriendPost) return {
-    matched: true, term: "friendPosts"};
+    matched: true, term: "Friend post"};
   if (profile.components.groupPosts && post.isGroupPost) return {
-    matched: true, term: "groupPosts"};
+    matched: true, term: "Group post"};
   if (profile.components.pagePosts && post.isPagePost) return {
-    matched: true, term: "pagePosts"};
+    matched: true, term: "Page post"};
   if (profile.components.friendSuggestions && post.isFriendSuggestion)
     return {
-      matched: true, term: "friendSuggestions"};
+      matched: true, term: "Suggestion"};
   if (profile.components.groupSuggestions && post.isGroupSuggestion)
     return {
-      matched: true, term: "groupSuggestions"};
+      matched: true, term: "Suggestion"};
   if (profile.components.postSuggestions && post.isPostSuggestion)
     return {
-      matched: true, term: "postSuggestions"};
+      matched: true, term: "Suggestion"};
 
   if (!localStore.profileKeywords) {
     localStore.profileKeywords = profile.filters.flatMap((filter) =>
@@ -427,9 +520,9 @@ const filterPost = (postHTMLNode, profile) => {
 
   let label = "";
   if (profile.mode === "exclude")
-    label = filterMatched ? `Hide: Matched exclude filter for: ${term}` : `Show: Not match exclude filter`;
+    label = filterMatched ? `(Hide): Matched exclude filter for: ${term}` : `(Show): Not match exclude filter`;
   else 
-    label = filterMatched ? `Hide: Not match include filter` : `Show: Matched include filter for: ${term}`;
+    label = filterMatched ? `(Hide): Not match include filter` : `(Show): Matched include filter for: ${term}`;
   decoratePost(postHTMLNode, filterMatched, label)
 };
 
