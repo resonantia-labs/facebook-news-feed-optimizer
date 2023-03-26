@@ -404,7 +404,7 @@ const localStore = {
   currentProfile: null,
   profileKeywords: null,
   newsFeedObserver: null,
-  debug: false,
+  debug: true,
 };
 
 const newsFeed = document.querySelector("span#ssrb_feed_start + div > div");
@@ -591,7 +591,6 @@ const handleChangeProfile = (data, callback) => {
   }
 
   filterPosts(newsFeed.childNodes, localStore.currentProfile);
-  // window.location.reload();
   callback({
     success: true,
     profile: localStore.currentProfile,
